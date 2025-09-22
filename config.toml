@@ -1,0 +1,72 @@
+# OFDM Chirp Generator Configuration
+# This file contains all configurable parameters for the OFDM signal generation system
+
+[ofdm]
+# OFDM signal configuration parameters
+num_subcarriers = 8
+subcarrier_spacing = 1000.0  # Hz
+bandwidth_per_subcarrier = 800.0  # Hz
+center_frequency = 10000.0  # Hz
+sampling_rate = 50000.0  # Hz
+signal_duration = 0.002  # seconds
+
+[chirp]
+# Chirp modulation parameters
+amplitude = 1.0
+phase_offset_range = [0.0, 6.283185307179586]  # [0, 2*pi] radians
+
+[optimization]
+# Phase optimization algorithm parameters
+max_iterations = 1000
+convergence_threshold = 1e-6
+orthogonality_target = 0.95
+population_size = 50
+mutation_rate = 0.1
+crossover_rate = 0.8
+early_stopping_patience = 50
+phase_resolution = 32
+
+[gpu]
+# GPU acceleration settings
+enable_gpu = true
+memory_limit_gb = 4.0
+fallback_to_cpu = true
+cleanup_memory_after_operations = true
+
+[orthogonality]
+# Orthogonality testing parameters
+default_threshold = 0.1
+correlation_method = "fft"  # "fft" or "direct"
+normalize_correlations = true
+
+[validation]
+# Parameter validation settings
+strict_validation = true
+allow_parameter_adjustment = false
+min_signal_length_samples = 50
+max_signal_length_samples = 1000000
+
+[logging]
+# Logging configuration
+level = "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+enable_gpu_logging = false
+log_performance_metrics = true
+
+[defaults]
+# Default values for optional parameters
+default_num_signals = 2
+default_optimization_method = "hybrid"
+default_export_format = "numpy"
+
+[performance]
+# Performance optimization settings
+enable_chunked_processing = true
+enable_adaptive_batching = true
+enable_memory_monitoring = true
+enable_performance_profiling = true
+chunk_overlap_samples = 0
+memory_cleanup_frequency = 10
+performance_log_frequency = 50
+memory_pressure_threshold = 0.8
+auto_fallback_to_cpu = true
+max_retry_attempts = 3
